@@ -4,7 +4,7 @@ const App = () => {
 
   return (
     <>
-      <p className="text-lg text-red-500">Hello!</p>
+      <div className="text-xl text-red-500">Hello</div>
     </>
   )
 }
