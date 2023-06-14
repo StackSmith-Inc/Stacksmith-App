@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { RootState } from './redux/store';
 import { useSelector, useDispatch } from 'react-redux'
 import { load, increment } from './redux/stackSourcesSlice';
+import { fetchTech } from './redux/stackSourcesSlice'
 import { Root } from 'postcss';
 
 const App = () => {
@@ -10,7 +11,13 @@ const App = () => {
   const value = useSelector((state: RootState) => state.stackSources.value);
   
   useEffect(() => {
-    // dispatch(load());
+    const techData = dispatch(fetchTech());
+    console.log(techData)
+    const techBox = techData.map((el) => {
+      <div >
+        el
+      </div>
+    })
   }, [])
 
   return (
