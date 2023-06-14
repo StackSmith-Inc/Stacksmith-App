@@ -2,6 +2,7 @@ const pg = require('pg');
 const express = require('express');
 const app = express();
 import { Request, Response, NextFunction, RequestHandler } from 'express';
+const AIController = require('./controllers/AIController')
 const PORT = 3000;
 
 app.use(express.json());
@@ -9,6 +10,9 @@ app.use(express.urlencoded());
 
 //add routes here
 
+app.post('/api/openai', AIController.call, async(req: Request, res: Response) => {
+  return res.status(200);
+})
 
 app.use('*', (req: Request, res: Response) => {
     res.sendStatus(404);
