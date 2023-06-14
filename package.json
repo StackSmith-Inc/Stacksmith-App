@@ -4,11 +4,11 @@
   "description": "A tech stack builder",
   "main": "webpack.config.js",
   "scripts": {
-    "start": "NODE_ENV=production nodemon ./server/server.js",
+    "start": "NODE_ENV=production nodemon ./server/server.ts",
     "build": "NODE_ENV=production webpack",
     "test": "jest",
     "coverage": "jest --coverage",
-    "dev": "NODE_ENV=development webpack serve --open & nodemon ./server/server.js"
+    "dev": "NODE_ENV=development webpack serve --open & nodemon ./server/server.ts"
   },
   "keywords": [],
   "author": "Stacksmith",
