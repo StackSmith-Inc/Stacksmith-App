@@ -10,7 +10,7 @@ const App = () => {
   const value = useSelector((state: RootState) => state.stackSources.value);
   
   useEffect(() => {
-    dispatch(load());
+    // dispatch(load());
   }, [])
 
   return (
