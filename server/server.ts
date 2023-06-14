@@ -1,11 +1,18 @@
+import { Request, Response, NextFunction, RequestHandler } from 'express';
 const pg = require('pg');
 const express = require('express');
+const path = require('path');
 const app = express();
-import { Request, Response, NextFunction, RequestHandler } from 'express';
 const PORT = 3000;
 
 app.use(express.json());
 app.use(express.urlencoded());
+
+app.use(express.static(path.join(__dirname, '../client')));
+
+app.get('/', (req: Request,res: Response) => {
+  res.sendFile(path.join(__dirname, '../client/index.html'))
+})
 
 //add routes here
 
