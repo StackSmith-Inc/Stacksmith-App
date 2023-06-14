@@ -9,7 +9,7 @@ export interface SourceState {
 }
 
 const initialState: SourceState = {
-  frontend: [],
+  frontend: ["Angular"],
   backend: [],
   database: [],
   value: 3
@@ -20,8 +20,11 @@ export const stackSourceSlice = createSlice({
   initialState,
   reducers: {
     load: (state) => {
-      const newState = [{ name: "React"}];
+      const newState = ["React"];
       state.frontend = newState;
+    },
+    increment: (state) => {
+      state.value += 1
     },
     incrementByAmount: (state, action: PayloadAction<number>) => {
       state.value += action.payload
@@ -30,6 +33,6 @@ export const stackSourceSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount } = counterSlice.actions
+export const { load, increment } = stackSourceSlice.actions
 
-export default counterSlice.reducer
+export default stackSourceSlice.reducer
