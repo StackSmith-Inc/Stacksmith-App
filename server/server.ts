@@ -8,11 +8,16 @@ app.use(express.json());
 app.use(express.urlencoded());
 
 //add routes here
+app.get('/frontend', (req: Request, res: Response) => {
+  return res.status(200).send(res.locals.info);
+})
+
 
 
 app.use('*', (req: Request, res: Response) => {
     res.sendStatus(404);
   });
+
 app.use((req: Request, res: Response, err: Object, next: NextFunction) => {
     const defaultErr = {
       log: 'Express error handler hiiiiii caught unknown middleware error',
