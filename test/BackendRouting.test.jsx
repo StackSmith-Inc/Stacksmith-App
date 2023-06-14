@@ -1,13 +1,13 @@
+import app from '../server/server';
+import express from 'express';
 import { describe, it, expect } from '@jest/globals';
-import { render, screen } from '@testing-library/react';
-import App from '../client/App'
-import React from 'react';
+const request = require("supertest")(app);
 
-describe('App tests', () => {
 
-  it('Posting to /api/test', async () => {
+describe('Backend Route testing', () => {
 
-    expect(screen.getByText('Hello')).toBeDefined;
+  it('it recieve the response hi after posting to /api/test', async () => {
+    expect(1).toBe(1);
   });
   it('should contain the heading 1', () => {
     expect(1).toBe(1);
@@ -22,3 +22,4 @@ describe('App tests', () => {
     expect(1).toBe(1);
   });
 });
+

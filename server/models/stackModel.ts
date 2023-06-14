@@ -1,17 +1,15 @@
-const { Pool } = require('pg')
+import { Pool, QueryResult } from 'pg';
 
-const URI = 'postgres://cuyzknub:uWRJI3AaZc2U79x4HEhBaIwNts4oL-_F@fanny.db.elephantsql.com/cuyzknub'
+
+const URI = 'postgres://vwoaasil:MeehyIZw2nHkLwDL2x_cPKWE6nGENYmI@fanny.db.elephantsql.com/vwoaasil'
 
 const pool = new Pool ({
     connectionString: URI
 })
 
-//add schema here
-
-module.exports = {
-    query: (text: string, params: string, callback: any) => {
+const query = (text: string, params?: any, callback?: any) => {
         console.log("executed query", text);
         return pool.query(text, params, callback)
     }
-}
+export default {query};
 
