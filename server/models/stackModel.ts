@@ -9,7 +9,7 @@ const pool = new Pool ({
 //add schema here
 
 module.exports = {
-    query: (text: String, params: String, callback: any) => {
+    query: (text: string, params: string, callback: any) => {
         console.log("executed query", text);
         return pool.query(text, params, callback)
     }
