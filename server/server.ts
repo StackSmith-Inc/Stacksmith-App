@@ -1,11 +1,10 @@
-
 import express from 'express';
 import controller from './controllers/stackController'
-import pg from 'pg';
 import { Request, Response, NextFunction } from 'express';
 const path = require('path');
 const app = express();
-
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const AIController = require('./controllers/AIController')
 const PORT = 3000;
 
 
@@ -26,11 +25,15 @@ app.get('/api/test', (req: Request, res: Response) => {
   return res.status(200).send('hi');
 })
 
+app.post('/api/openai', AIController.call, async(req: Request, res: Response) => {
+  return res.status(200).json(res.locals.techStacks);
+})
 
 app.use('*', controller.getTechFrontend, (req: Request, res: Response) => {
     res.sendStatus(404);
   });
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 app.use((err: unknown, req: Request, res: Response, next: NextFunction) => {
     const defaultErr = {
       log: 'Express error handler hii caught unknown middleware error',
