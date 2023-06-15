@@ -7,6 +7,7 @@ import Nav from './Nav';
 import Analysis from './Analysis';
 
 const App = () => {
+
   const dispatch = useDispatch();
   
   useEffect(() => {
@@ -24,7 +25,7 @@ const App = () => {
     })
     .then(data => {
       dispatch(fetchTech(data.rows));
-      console.log(data.rows)
+      console.log('data:',data.rows)
     })
     .catch(error => {
       console.error(error)

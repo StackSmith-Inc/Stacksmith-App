@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
 export interface SourceState {
-  allTechs: object[],
+  allTechs: {img:string, techdescription:string, techname:string, techtype:string}[],
   pickTech: {
     frontend: object[],
     backend: object[],
@@ -44,6 +44,12 @@ export const fetchSlice = createSlice({
   reducers: {
     fetchTech: (state, action: PayloadAction<[]>) => {
       state.allTechs = action.payload
+      const allTechsArr = state.allTechs
+      //@ts-ignore
+      allTechsArr.forEach((el: techPayload) => {
+        //@ts-ignore
+        state.pickTech[el.techtype.toLowerCase()].push(el)
+      }) 
     },
     addTech: (state, action: PayloadAction<techPayload>) => {
       const index = action.payload.techtype.toLowerCase()

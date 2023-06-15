@@ -1,7 +1,7 @@
 import express from 'express';
 import controller from './controllers/stackController'
 import { Request, Response, NextFunction } from 'express';
-
+const path = require('path');
 const app = express();
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const AIController = require('./controllers/AIController')
@@ -10,6 +10,11 @@ const PORT = 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+app.use(express.static(path.join(__dirname, '../client')));
+app.get('/', (req: Request,res: Response) => {
+  res.sendFile(path.join(__dirname, '../client/index.html'))
+})
+
 
 //add routes here
 app.get('/api/frontend', controller.getTechFrontend, (req: Request, res: Response) => {

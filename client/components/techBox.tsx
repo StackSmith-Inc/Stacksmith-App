@@ -2,28 +2,32 @@ import React from 'react'
 import { RootState } from '../redux/store';
 import { useSelector, useDispatch } from 'react-redux'
 
-interface techBoxProps {
-  techObj: techObj,
-  handleClick: (e: any) => void
-}
+// interface techBoxProps {
+//   techObj: techObj,
+//   handleClick: (e: any) => void
+// }
 
-interface techObj {
-    techname: string,
-    techtype: string,
-    techdescription: string,
-    img: string
-  }
+// interface techObj {
+//     techname: string,
+//     techtype: string,
+//     techdescription: string,
+//     img: string
+//   }
 
-const techBox: React.FC = (props: techBoxProps) => {
-  const dispatch = useDispatch();    
+const TechBox = (props: any):any => {
+  console.log('props',props)
+  const dispatch = useDispatch(); 
+  
+ 
+  
   return (
     <>
-      <div className="tooltip" data-tip={props.techObj.techdescription}>
-        <p>{props.techObj.techname}</p>
+      <div className="tooltip" data-tip={props.techObj.techdescription}  >
+        <p> {props.techObj.techname}</p>
         <img onClick={(e) => dispatch(props.handleClick(e))} className='btn' src={props.techObj.img}/>
       </div>
     </>
   )
 }
 
-export default techBox;
+export default TechBox;
