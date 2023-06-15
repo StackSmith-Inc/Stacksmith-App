@@ -6,18 +6,18 @@ const AIController = require('./controllers/AIController')
 const PORT = 3000;
 
 app.use(express.json());
-app.use(express.urlencoded());
+app.use(express.urlencoded({extended: true}));
 
 //add routes here
 
 app.post('/api/openai', AIController.call, async(req: Request, res: Response) => {
-  return res.status(200);
+  return res.status(200).json(res.locals.techStacks);
 })
 
 app.use('*', (req: Request, res: Response) => {
     res.sendStatus(404);
   });
-app.use((req: Request, res: Response, err: Object, next: NextFunction) => {
+app.use((req: Request, res: Response, err: object, next: NextFunction) => {
     const defaultErr = {
       log: 'Express error handler hiiiiii caught unknown middleware error',
       status: 400,
