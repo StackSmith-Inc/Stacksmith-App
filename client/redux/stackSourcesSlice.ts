@@ -2,37 +2,58 @@ import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
 export interface SourceState {
-  frontend: Object[],
-  backend: Object[],
-  database: Object[]
-  value: number
+  allTechs: object[],
+  pickTech: {
+    frontend: object[],
+    backend: object[],
+    database: object[],
+  }
+  chosenTechs: {
+    frontend: object[],
+    backend: object[],
+    database: object[],
+  },
+  
 }
 
 const initialState: SourceState = {
-  frontend: ["Angular"],
-  backend: [],
-  database: [],
-  value: 3
+  allTechs: [],
+  pickTech: {
+    frontend: [],
+    backend: [],
+    database: [],
+  },
+  chosenTechs: {
+    frontend: [],
+    backend: [],
+    database: [],
+  },
 }
 
-export const stackSourceSlice = createSlice({
-  name: 'stackSource',
+interface techPayload {
+  techname: string,
+  img: string,
+  techtype: string,
+  techdescription: string
+}
+
+export const fetchSlice = createSlice({
+  name: 'fetchSlice',
   initialState,
   reducers: {
-    load: (state) => {
-      const newState = ["React"];
-      state.frontend = newState;
+    fetchTech: (state, action: PayloadAction<[]>) => {
+      state.allTechs = action.payload
     },
-    increment: (state) => {
-      state.value += 1
-    },
-    incrementByAmount: (state, action: PayloadAction<number>) => {
-      state.value += action.payload
+    addTech: (state, action: PayloadAction<techPayload>) => {
+      const index: string = action.payload.techtype.toLowerCase()
+      state.chosenTechs[index]
     },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { load, increment } = stackSourceSlice.actions
+// export const { load, increment } = stackSourceSlice.actions
 
-export default stackSourceSlice.reducer
+export const { fetchTech, addTech } = fetchSlice.actions
+
+export default fetchSlice.reducer
