@@ -1,4 +1,3 @@
-
 import express from 'express';
 import controller from './controllers/stackController'
 import pg from 'pg';
