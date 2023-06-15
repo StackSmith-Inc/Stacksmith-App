@@ -45,15 +45,31 @@ export const fetchSlice = createSlice({
       state.allTechs = action.payload
     },
     addTech: (state, action: PayloadAction<techPayload>) => {
-      const index: string = action.payload.techtype.toLowerCase()
-      state.chosenTechs[index]
+      const index = action.payload.techtype.toLowerCase()
+      state.chosenTechs[index].push(action.payload);
+      for (let i = 0; i < state.pickTech[index].length; i--) {
+        if (state.pickTech[index][i].techname === action.payload.techname) {
+          state.pickTech[index].splice(i, 1);
+          break;
+        }
+      }
     },
+    removeTech: (state, action: PayloadAction<techPayload>) => {
+      const index = action.payload.techtype.toLowerCase()
+      state.pickTech[index].push(action.payload);
+      for (let i = 0; i < state.chosenTechs[index].length; i--) {
+        if (state.chosenTechs[index][i].techname === action.payload.techname) {
+          state.chosenTechs[index].splice(i, 1);
+          break;
+        }
+      }
+    }
   },
 })
 
 // Action creators are generated for each case reducer function
 // export const { load, increment } = stackSourceSlice.actions
 
-export const { fetchTech, addTech } = fetchSlice.actions
+export const { fetchTech, addTech, removeTech } = fetchSlice.actions
 
 export default fetchSlice.reducer
