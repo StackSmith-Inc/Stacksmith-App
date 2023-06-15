@@ -3,7 +3,6 @@ import express from 'express';
 import controller from './controllers/stackController'
 import pg from 'pg';
 import { Request, Response, NextFunction } from 'express';
-
 const app = express();
 
 const PORT = 3000;
