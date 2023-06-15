@@ -1,7 +1,8 @@
 import { Pool, QueryResult } from 'pg';
+require('dotenv').config();
 
 
-const URI = 'postgres://vwoaasil:MeehyIZw2nHkLwDL2x_cPKWE6nGENYmI@fanny.db.elephantsql.com/vwoaasil'
+const URI = process.env.PG_URI
 
 const pool = new Pool ({
     connectionString: URI
