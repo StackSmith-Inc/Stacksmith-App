@@ -21,7 +21,7 @@ AIController.call = async (req : Request, res : Response, next : NextFunction) =
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer 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`
+        'Authorization': `Bearer ${process.env.OPENAI_KEY}`
       },
       body: JSON.stringify(payload),
     });
