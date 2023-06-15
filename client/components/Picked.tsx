@@ -1,6 +1,6 @@
 import React from "react";
 
-const Options = () => {
+const Picked = () => {
 
   return(
     <>
@@ -25,4 +25,4 @@ const Options = () => {
   )
 }
 
-export default Options
+export default Picked

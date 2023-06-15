@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { fetchTech } from '../redux/stackSourcesSlice';
 import Options from './Options';
+import Picked from './Picked'
 import Nav from './Nav';
 import Analysis from './Analysis';
 
@@ -33,7 +34,11 @@ const App = () => {
   return (
     <>
       <Nav/>
-      <Options/>
+      <div className="flex flex-col lg:flex-row m-6">
+        <Options/>
+        <div className="divider lg:divider-horizontal"></div> 
+        <Picked/>
+      </div>
       <Analysis/>
     </>
   )
